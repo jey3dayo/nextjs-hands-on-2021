@@ -1,40 +1,39 @@
-import * as React from 'react';
+import React from 'react';
+import App from 'next/app';
 import Head from 'next/head';
 import getConfig from 'next/config';
-import { ThemeProvider } from '@material-ui/core/styles';
-import { CacheProvider } from '@emotion/react';
-import { CssBaseline } from '@material-ui/core';
-import createCache from '@emotion/cache';
+import { ThemeProvider } from '@material-ui/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '/styles/theme';
 import '/styles/globals.css';
 
 const { publicRuntimeConfig } = getConfig();
 const { APP_NAME } = publicRuntimeConfig;
 
-export const cache = createCache({ key: 'css', prepend: true });
-
-export default function MyApp(props) {
-  const { Component, pageProps } = props;
-
-  React.useEffect(() => {
+class MyApp extends App {
+  componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
+      jssStyles.parentNode.removeChild(jssStyles);
     }
-  }, []);
+  }
 
-  return (
-    <CacheProvider value={cache}>
-      <Head>
+  render() {
+    const { Component, pageProps } = this.props;
+    return (
+      <>
+        <Head>
         <title>{APP_NAME}</title>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
-  );
+        </Head>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </>
+    );
+  }
 }
+
+export default MyApp;

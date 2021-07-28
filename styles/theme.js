@@ -1,10 +1,9 @@
 import { createTheme } from '@material-ui/core/styles';
-import { blue } from '@material-ui/core/colors';
+import deepPurple from '@material-ui/core/colors/deepPurple';
 
 const theme = createTheme({
   palette: {
-    // primary: blue,
-    primary: blue,
+    primary: deepPurple,
   },
 });
 

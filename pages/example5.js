@@ -15,6 +15,7 @@ const items = [
 const Example = () => {
   return (
     <Container>
+      <div style={{ color: 'red', fontSize: '1.2rem' }}>カスタムコンポーネント</div>
       <CustomList users={items} />
       <CustomButton>ボタンA</CustomButton>
       <CustomButtonSecondary>ボタンB</CustomButtonSecondary>

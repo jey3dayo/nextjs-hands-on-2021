@@ -2,28 +2,22 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/container';
+import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { red, blueGrey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    background: blueGrey[200],
+  title: {
+    background: blueGrey[100],
+    color: red[800],
+    fontSize: '1.2rem',
+    fontWeight: 'bold',
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  },
-  title: {
-    background: blueGrey[100],
-    color: red[800],
-    paddingTop: '12px',
-    paddingBottom: '12px',
-  },
-  contents: {
-    padding: 10,
   },
 }));
 
@@ -38,9 +32,9 @@ const Example = () => {
 
   return (
     <Container>
-      <div className={classes.root}>
-        <div className={classes.title}>Grid Layout</div>
-        <div className={classes.contents}>
+      <Box sx={{ flexGrow: 1, background: blueGrey[200] }}>
+        <Box className={classes.title} sx={{ p: 1 }}>Grid Layout</Box>
+        <Box sx={{ m: 2 }}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Paper className={classes.paper}>xs=12</Paper>
@@ -64,10 +58,10 @@ const Example = () => {
               <Paper className={classes.paper}>xs=3</Paper>
             </Grid>
           </Grid>
-        </div>
+        </Box>
 
-        <div className={classes.title}>Users</div>
-        <div className={classes.contents}>
+        <Box className={classes.title} sx={{ p: 1 }}>Users</Box>
+        <Box sx={{ m: 2 }}>
           <Grid container spacing={3}>
             {users.map(user => {
               return (
@@ -77,13 +71,13 @@ const Example = () => {
               );
             })}
           </Grid>
-        </div>
+        </Box>
         <div>
           <a href="https://material-ui.com/components/grid/" target="_blank" rel="noreferrer">
             参考: React Grid component - Material-UI
           </a>
         </div>
-      </div>
+      </Box>
     </Container>
   );
 };

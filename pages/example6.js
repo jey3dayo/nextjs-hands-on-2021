@@ -1,0 +1,89 @@
+// React.useStateとtextField
+import React from 'react';
+import Container from '@material-ui/core/container';
+import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField'; import { makeStyles } from '@material-ui/styles';
+import { red, blueGrey } from '@material-ui/core/colors';
+import { CustomButton } from '/components/uiParts/CustomButton';
+
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1,
+    paddingTop: 20,
+  },
+  title: {
+    fontSize: '1.2rem',
+    fontWeight: 'bold',
+    color: red[800],
+    paddingBottom: 20,
+  },
+});
+
+const Example = () => {
+  // React.useStateを利用し、変数とセッターを用意
+  // これをDOMに組み込むとリアルタイムに画面反映される
+  const [value, setValue] = React.useState('はいさい');
+  const classes = useStyles();
+
+  const handleChange = event => {
+    setValue(event.target.value);
+  };
+
+  const onClick = () => {
+    setValue('');
+  };
+
+  return (
+    <Container>
+      <div className={classes.root}>
+        <div className={classes.title}>React.useState</div>
+        <Box
+          component="form"
+          noValidate
+          sx={{
+            '& .MuiTextField-root': { m: 1, width: '25ch' },
+          }}
+        >
+          <TextField id="outlined-basic" label="テキスト" variant="outlined" value={value} onChange={handleChange} />
+
+          <Box component="span" sx={{ padding: '10px' }}>
+            <CustomButton onClick={onClick}>クリア</CustomButton>
+          </Box>
+
+          <Box
+            component="form"
+            noValidate
+            sx={{
+              '& .MuiTextField-root': { m: 1, width: '25ch', marginTop: '3ch', marginBottom: '3ch' },
+            }}
+          >
+            <TextField
+              error={value === ''}
+              id="standard-error-helper-text"
+              variant="standard"
+              label="テキスト"
+              variant="standard"
+              defaultValue="Hello World"
+              helperText={value === '' ? '未入力です' : ''}
+              value={value}
+              onChange={handleChange}
+            />
+          </Box>
+        </Box>
+
+        <div>
+          <a href="https://next.material-ui.com/components/text-fields/" target="_blank" rel="noreferrer">
+            参考: Text Field React component - Material-UI
+          </a>
+        </div>
+      </div>
+    </Container>
+  );
+};
+
+/*
+ * ch は chracter unit で、0（ゼロ）の幅を単位とします。
+ * 基本的には等幅フォントが対象で、要素にwidth: 40ch と指定すれば40文字入る幅が設定されます
+ */
+
+export default Example;

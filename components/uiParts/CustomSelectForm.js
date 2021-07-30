@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-const SelectForm = ({ label = 'ラベル', items }) => {
+const SelectForm = ({ id = 'label', label = 'ラベル', items }) => {
   const [value, setValue] = React.useState('');
 
   const handleChange = event => {
@@ -15,10 +15,10 @@ const SelectForm = ({ label = 'ラベル', items }) => {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+        <InputLabel id={`${id}-label`}>{label}</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          labelId={`${id}-label`}
+          id={label}
           value={value}
           label="Items"
           onChange={handleChange}

@@ -8,6 +8,8 @@ import { makeStyles } from '@material-ui/styles';
 import { red } from '@material-ui/core/colors';
 import { CustomButton } from '/components/uiParts/CustomButton';
 
+const initUsername = 'jey3dayo';
+
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
@@ -34,17 +36,18 @@ const fetchApi = async username => {
   return result;
 };
 
-const Example = () => {
-  // React.useStateを利用し、変数とセッターを用意
-  // これをDOMに組み込むとリアルタイムに画面反映される
-  const [username, setUsername] = React.useState('jey3dayo');
-  const [value, setValue] = React.useState('');
+const Example = ({ userInfo }) => {
+  // state用意
+  const [username, setUsername] = React.useState(initUsername);
+  const [value, setValue] = React.useState(userInfo ?? '');
   const classes = useStyles();
 
+  // ユーザ名の反映
   const handleChange = event => {
     setUsername(event.target.value);
   };
 
+  // 更新ボタンを押すと実行
   const onClick = async () => {
     try {
       const res = await fetchApi(username);
@@ -75,8 +78,8 @@ const Example = () => {
         </Box>
 
         <div>
-          <a href="https://next.material-ui.com/components/text-fields/" target="_blank" rel="noreferrer">
-            参考: Text Field React component - Material-UI
+          <a href="https://nextjs.org/docs/basic-features/data-fetching" target="_blank" rel="noreferrer">
+            参考: Basic Features: Data Fetching | Next.js
           </a>
         </div>
       </div>
@@ -84,4 +87,13 @@ const Example = () => {
   );
 };
 
+// コンストラクタみたいなもの
+export async function getStaticProps() {
+  const res = await fetchApi(initUsername);
+  return {
+    props: {
+      userInfo: JSON.stringify(res),
+    },
+  }
+}
 export default Example;

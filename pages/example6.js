@@ -62,7 +62,6 @@ const Example = () => {
               id="standard-error-helper-text"
               variant="standard"
               label="テキスト"
-              variant="standard"
               defaultValue="Hello World"
               helperText={value === '' ? '未入力です' : ''}
               value={value}

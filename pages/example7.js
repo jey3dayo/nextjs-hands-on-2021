@@ -1,6 +1,5 @@
 // React.useStateとtextField
 import React from 'react';
-// import fetch from 'isomorphic-unfetch';
 import Container from '@material-ui/core/container';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';

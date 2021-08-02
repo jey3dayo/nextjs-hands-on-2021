@@ -47,7 +47,7 @@ const Example = () => {
           <TextField id="outlined-basic" label="テキスト" variant="outlined" value={value} onChange={handleChange} />
 
           <Box component="span" sx={{ padding: '10px' }}>
-            <CustomButton onClick={onClick}>クリア</CustomButton>
+            <CustomButton onClick={onClick} variant="outlined">クリア</CustomButton>
           </Box>
 
           <Box

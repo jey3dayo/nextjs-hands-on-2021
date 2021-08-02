@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 const Example = () => {
   // React.useStateを利用し、変数とセッターを用意
   // これをDOMに組み込むとリアルタイムに画面反映される
-  const [value, setValue] = React.useState('はいさい');
+  const [value, setValue] = React.useState('テスト');
   const classes = useStyles();
 
   const handleChange = event => {
@@ -62,7 +62,6 @@ const Example = () => {
               id="standard-error-helper-text"
               variant="standard"
               label="テキスト"
-              defaultValue="Hello World"
               helperText={value === '' ? '未入力です' : ''}
               value={value}
               onChange={handleChange}

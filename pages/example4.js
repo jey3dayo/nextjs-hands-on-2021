@@ -6,14 +6,14 @@ import Container from '@material-ui/core/container';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { red, blueGrey } from '@material-ui/core/colors';
+import { blueGrey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles(theme => ({
   title: {
-    background: blueGrey[100],
-    color: red[800],
-    fontSize: '1.2rem',
+    color: theme.palette.secondary.main,
+    fontSize: '1.3rem',
     fontWeight: 'bold',
+    background: blueGrey[100],
   },
   paper: {
     padding: theme.spacing(2),

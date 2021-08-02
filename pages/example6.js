@@ -2,22 +2,22 @@
 import React from 'react';
 import Container from '@material-ui/core/container';
 import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField'; import { makeStyles } from '@material-ui/styles';
-import { red, blueGrey } from '@material-ui/core/colors';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/styles';
 import { CustomButton } from '/components/uiParts/CustomButton';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     paddingTop: 20,
   },
   title: {
-    fontSize: '1.2rem',
+    fontSize: '1.3rem',
     fontWeight: 'bold',
-    color: red[800],
+    color: theme.palette.secondary.main,
     paddingBottom: 20,
   },
-});
+}));
 
 const Example = () => {
   // React.useStateを利用し、変数とセッターを用意

@@ -1,17 +1,17 @@
 // スタイル適用
 import Container from '@material-ui/core/container';
 import { makeStyles } from '@material-ui/styles';
-import { red, blueGrey } from '@material-ui/core/colors';
+import { blueGrey } from '@material-ui/core/colors';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     background: blueGrey[200],
   },
   title: {
-    background: blueGrey[100],
-    fontSize: '1.2rem',
+    fontSize: '1.3rem',
     fontWeight: 'bold',
-    color: red[800],
+    color: theme.palette.secondary.main,
+    background: blueGrey[100],
     paddingTop: '12px',
     paddingBottom: '12px',
   },
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     paddingTop: '12px',
     paddingBottom: '12px',
   },
-});
+}));
 
 const Example = () => {
   const classes = useStyles();

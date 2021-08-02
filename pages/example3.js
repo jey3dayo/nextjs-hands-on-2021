@@ -1,19 +1,21 @@
 // mapで操作
 import { makeStyles } from '@material-ui/styles';
-import { red, blueGrey } from '@material-ui/core/colors';
+import { blueGrey } from '@material-ui/core/colors';
 import Container from '@material-ui/core/container';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     background: blueGrey[200],
   },
   title: {
     background: blueGrey[100],
-    color: red[800],
+    fontSize: '1.3rem',
+    fontWeight: 'bold',
+    color: theme.palette.secondary.main,
     paddingTop: '12px',
     paddingBottom: '12px',
   },
-});
+}));
 
 const users = [
   { id: 1, name: 'Aさん' },

@@ -1,5 +1,6 @@
 // レイアウト
 import React from 'react';
+import CustomAppBar from '/components/uiParts/CustomAppBar';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/container';
 import Box from '@material-ui/core/Box';
@@ -31,54 +32,61 @@ const Example = () => {
   const classes = useStyles();
 
   return (
-    <Container>
-      <Box sx={{ flexGrow: 1, background: blueGrey[200] }}>
-        <Box className={classes.title} sx={{ p: 1 }}>Grid Layout</Box>
-        <Box sx={{ m: 2 }}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>xs=12</Paper>
+    <Box sx={{ flexGrow: 1 }}>
+      <CustomAppBar />
+      <Container>
+        <Box sx={{ flexGrow: 1, background: blueGrey[200] }}>
+          <Box className={classes.title} sx={{ p: 1 }}>
+            Grid Layout
+          </Box>
+          <Box sx={{ m: 2 }}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>xs=12</Paper>
+              </Grid>
+              <Grid item xs={6}>
+                <Paper className={classes.paper}>xs=6</Paper>
+              </Grid>
+              <Grid item xs={6}>
+                <Paper className={classes.paper}>xs=6</Paper>
+              </Grid>
+              <Grid item xs={3}>
+                <Paper className={classes.paper}>xs=3</Paper>
+              </Grid>
+              <Grid item xs={3}>
+                <Paper className={classes.paper}>xs=3</Paper>
+              </Grid>
+              <Grid item xs={3}>
+                <Paper className={classes.paper}>xs=3</Paper>
+              </Grid>
+              <Grid item xs={3}>
+                <Paper className={classes.paper}>xs=3</Paper>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>xs=6</Paper>
-            </Grid>
-            <Grid item xs={6}>
-              <Paper className={classes.paper}>xs=6</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>xs=3</Paper>
-            </Grid>
-          </Grid>
-        </Box>
+          </Box>
 
-        <Box className={classes.title} sx={{ p: 1 }}>Users</Box>
-        <Box sx={{ m: 2 }}>
-          <Grid container spacing={3}>
-            {users.map(user => {
-              return (
-                <Grid key={user.id} item xs={4}>
-                  <Paper className={classes.paper}>{user.name}</Paper>
-                </Grid>
-              );
-            })}
-          </Grid>
+          <Box className={classes.title} sx={{ p: 1 }}>
+            Users
+          </Box>
+          <Box sx={{ m: 2 }}>
+            <Grid container spacing={3}>
+              {users.map(user => {
+                return (
+                  <Grid key={user.id} item xs={4}>
+                    <Paper className={classes.paper}>{user.name}</Paper>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Box>
+          <div>
+            <a href="https://material-ui.com/components/grid/" target="_blank" rel="noreferrer">
+              参考: React Grid component - Material-UI
+            </a>
+          </div>
         </Box>
-        <div>
-          <a href="https://material-ui.com/components/grid/" target="_blank" rel="noreferrer">
-            参考: React Grid component - Material-UI
-          </a>
-        </div>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 };
 

@@ -1,5 +1,5 @@
 // スタイル適用
-import Container from '@material-ui/core/container';
+import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/styles';
 import { blueGrey } from '@material-ui/core/colors';
 

@@ -1,7 +1,7 @@
 // mapで操作
 import { makeStyles } from '@material-ui/styles';
 import { blueGrey } from '@material-ui/core/colors';
-import Container from '@material-ui/core/container';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
   root: {

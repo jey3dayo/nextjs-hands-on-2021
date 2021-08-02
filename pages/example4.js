@@ -2,7 +2,7 @@
 import React from 'react';
 import CustomAppBar from '/components/uiParts/CustomAppBar';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/container';
+import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';

@@ -1,6 +1,6 @@
 // React.useStateとtextField
 import React from 'react';
-import Container from '@material-ui/core/container';
+import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/styles';

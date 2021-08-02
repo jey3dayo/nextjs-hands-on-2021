@@ -1,5 +1,5 @@
 // MUIの使い方, uiPartsへの配置
-import Container from '@material-ui/core/container';
+import Container from '@material-ui/core/Container';
 import { CustomButton, CustomButtonSecondary } from '/components/uiParts/CustomButton';
 import CustomList from '/components/CustomList';
 

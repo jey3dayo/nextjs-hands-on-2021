@@ -3,13 +3,14 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
+import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/styles';
 import { red } from '@material-ui/core/colors';
 import { CustomButton } from '/components/uiParts/CustomButton';
 
 const initUsername = 'jey3dayo';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     paddingTop: 20,
@@ -20,7 +21,15 @@ const useStyles = makeStyles({
     color: red[800],
     paddingBottom: 20,
   },
-});
+  small: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
+}));
 
 const fetchApi = async username => {
   const uri = `https://api.github.com/users/${username}`;
@@ -50,11 +59,13 @@ const Example = ({ userInfo }) => {
   const onClick = async () => {
     try {
       const res = await fetchApi(username);
-      setValue(JSON.stringify(res));
+      setValue(res);
     } catch (e) {
       setValue(e?.message ?? 'error');
     }
   };
+
+  const avatarUrl = value?.avatar_url ?? null;
 
   return (
     <Container>
@@ -73,7 +84,9 @@ const Example = ({ userInfo }) => {
             <CustomButton onClick={onClick}>更新</CustomButton>
           </Box>
 
-          <Box sx={{ padding: '10px' }}>value: {value}</Box>
+          {avatarUrl ? <Avatar alt="avatar" src={avatarUrl} className={classes.large} /> : null}
+
+          <Box sx={{ padding: '10px' }}>value: {JSON.stringify(value)}</Box>
         </Box>
 
         <div>
@@ -91,8 +104,8 @@ export async function getStaticProps() {
   const res = await fetchApi(initUsername);
   return {
     props: {
-      userInfo: JSON.stringify(res),
+      userInfo: res,
     },
-  }
+  };
 }
 export default Example;

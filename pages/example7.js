@@ -100,7 +100,7 @@ const Example = ({ userInfo }) => {
 };
 
 // コンストラクタみたいなもの
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetchApi(initUsername);
   return {
     props: {

@@ -4,6 +4,8 @@ const nextConfig = {
   publicRuntimeConfig: {
     env: NODE_ENV,
     APP_NAME,
+  },
+  serverRuntimeConfig: {
     HOTPEPPER_API_KEY,
   },
 };

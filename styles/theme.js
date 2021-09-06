@@ -1,14 +1,14 @@
 import { createTheme } from '@material-ui/core/styles';
-import deepPurple from '@material-ui/core/colors/deepPurple';
-import red from '@material-ui/core/colors/red';
+import lightGreen from '@material-ui/core/colors/lightGreen';
+import lightBlue from '@material-ui/core/colors/lightBlue';
 
 export const palette = {
 };
 
 const theme = createTheme({
   palette: {
-    primary: deepPurple,
-    secondary: red,
+    primary: lightGreen,
+    secondary: lightBlue,
   },
 });
 

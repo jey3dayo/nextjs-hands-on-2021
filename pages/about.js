@@ -8,6 +8,7 @@ const About = () => {
       <div>about page</div>
       <Link href="/">Home</Link>
 
+      
       <Button variant="contained" color="primary">
         Hello!
       </Button>

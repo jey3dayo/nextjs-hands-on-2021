@@ -11,11 +11,12 @@ const Example = ({ gourmet }) => {
 };
 
 // データ取得準備
+// getServerSideProps
 export async function getServerSideProps() {
-  const { serverRuntimeConfig } = getConfig();
-  const { HOTPEPPER_API_KEY } = serverRuntimeConfig;
-  const gourmetUrl = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${HOTPEPPER_API_KEY}&large_area=Z011&format=json`;
-  const res = await fetch(gourmetUrl);
+  const { publicRuntimeConfig } = getConfig();
+  const { HOST } = publicRuntimeConfig;
+
+  const res = await fetch(`${HOST}/api/gourmet`);
   const data = await res.json();
 
   return {

@@ -9,8 +9,9 @@ const Index = () => (
     <CustomAppBar />
     <Container style={{ marginTop: '10px' }}>
       <Typography variant="h3">
-        Example
+        ジャンル
       </Typography>
+
       <ExampleLinks />
     </Container>
   </Box>

@@ -9,6 +9,7 @@ import '/styles/globals.css';
 
 const { publicRuntimeConfig } = getConfig();
 const { APP_NAME } = publicRuntimeConfig;
+const { VERCEL_URL } = publicRuntimeConfig;
 // 環境変数の呼び出し
 const { serverRuntimeConfig } = getConfig();
 const { HOTPEPPER_API_KEY } = serverRuntimeConfig;

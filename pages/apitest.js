@@ -44,7 +44,14 @@ export async function getServerSideProps() {
 
   const areaMode = ['small_area', 'middle_area', 'large_area'];
   const areaCode = ['X119', 'Y964'];
+  const budgetList = {
+    low: '&budget=B010,B011',
+    middle: '&budget=B001,B002',
+    high: '&budget=B003,B008',
+    all: '',
+  };
   query.set('area', areaCode[0]);
+  query.append('budget', budgetList.low);
   const apiUrl = `http://${VERCEL_URL}api/getJson?${query.toString()}`;
   const res = await fetch(apiUrl);
   const data = await res.json();

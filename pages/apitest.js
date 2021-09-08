@@ -15,7 +15,7 @@ const Example = ({ gourmet }) => {
               <Link href={item.urls.pc}>
                 <a>
                   <div>
-                    <img src={item.photo.mobile.s} alt={item.name} />
+                    <img src={item.photo.pc.l} alt={item.name} />
                     {item.name}
                     <span>{item.genre.name}</span>
                     <span>{item.catch}</span>

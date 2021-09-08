@@ -36,7 +36,9 @@ export async function getServerSideProps() {
   // 取得テスト
   const { serverRuntimeConfig } = getConfig();
   const { HOTPEPPER_API_KEY } = serverRuntimeConfig;
-  const gourmetUrl = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${HOTPEPPER_API_KEY}&middle_area=Y964&format=json`;
+  const areaMode = ['small_area', 'middle_area', 'large_area'];
+  const areaCode = ['X119', 'Y964'];
+  const gourmetUrl = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${HOTPEPPER_API_KEY}&count=30&${areaMode[0]}=${areaCode[0]}&budget=B010,B011&format=json`;
   const res = await fetch(gourmetUrl);
   const data = await res.json();
 

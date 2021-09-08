@@ -34,12 +34,19 @@ const Example = ({ gourmet }) => {
 // export async function getStaticProps() {
 export async function getServerSideProps() {
   // 取得テスト
+  const query = new URLSearchParams();
+
   const { serverRuntimeConfig } = getConfig();
   const { HOTPEPPER_API_KEY } = serverRuntimeConfig;
+
+  const { publicRuntimeConfig } = getConfig();
+  const { VERCEL_URL } = publicRuntimeConfig;
+
   const areaMode = ['small_area', 'middle_area', 'large_area'];
   const areaCode = ['X119', 'Y964'];
-  const gourmetUrl = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${HOTPEPPER_API_KEY}&count=30&${areaMode[0]}=${areaCode[0]}&budget=B010,B011&format=json`;
-  const res = await fetch(gourmetUrl);
+  query.set('area', areaCode[0]);
+  const apiUrl = `http://${VERCEL_URL}api/getJson?${query.toString()}`;
+  const res = await fetch(apiUrl);
   const data = await res.json();
 
   return {

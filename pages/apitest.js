@@ -1,24 +1,35 @@
 import React from 'react';
 import getConfig from 'next/config';
+import Head from 'next/head';
+import Link from 'next/link';
 
-const Example = ({ gourmet ,}) => {
+const Example = ({ gourmet }) => {
   return (
     <div>
       <h1>gourmet</h1>
-      <div>{JSON.stringify(gourmet)}</div>
+
+      <ul>
+        {gourmet.results.shop.map((item, index) => {
+          return (
+            <li key={index}>
+              <Link href={item.urls.pc}>
+                <a>
+                  <div>
+                    <img src={item.photo.mobile.s} alt={item.name} />
+                    {item.name}
+                    <span>{item.genre.name}</span>
+                    <span>{item.catch}</span>
+                    <p> {item.access}</p>
+                  </div>
+                </a>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
-
-const shop = ({ gourmet }) => {
-  var shops;
-  var yooso = gourmet.split(',');
-  for (let i = 0; i < yooso.length; i++) {
-    if (yooso.indexOf("name_kana") != 0) {
-      shops.push(yooso[i - 1]);
-    }
-  }
-}
 
 // export async function getStaticProps() {
 export async function getServerSideProps() {

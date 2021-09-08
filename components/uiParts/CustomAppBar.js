@@ -9,7 +9,7 @@ import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import logo from 'Logo/logo2.png';
+import Image from 'next/image';
 
 const { publicRuntimeConfig } = getConfig();
 const { APP_NAME } = publicRuntimeConfig;
@@ -20,8 +20,7 @@ const CustomAppBar = () => (
       <IconButton size="medium" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
         <MenuIcon />
       </IconButton>
-      <img src={'https://imgfp.hotp.jp/IMGH/18/33/P038071833/P038071833_69.jpg'} alt="ダミーロゴ" />
-      {/* <img src={logo} width="50" height="50"/> */}
+      <Image alt="グルメンドロゴ" src="/logo_transparent.png" width={100} height={100} />
       <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
         {APP_NAME}
       </Typography>
@@ -31,7 +30,7 @@ const CustomAppBar = () => (
         </Grid>
         <Grid xs={3}>
           <NativeSelect>
-            <option >すべて</option>
+            <option>すべて</option>
             <option>居酒屋</option>
             <option>ダイニングバー・バル</option>
             <option>創作料理</option>

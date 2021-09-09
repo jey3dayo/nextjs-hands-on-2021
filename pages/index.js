@@ -19,6 +19,7 @@ const Index = () => {
       <CustomAppBar />
       <Container>
         <Typography variant="h4">ジャンル</Typography>
+        <Card variant="outlined" className={classes.root}>
         <Grid container spacing={1} className={classes.genre} justifyContent="center">
           <Grid item xs={2} className={classes.image}>
             <Image alt="居酒屋" src="/beer.png" width={100} height={100} />
@@ -89,15 +90,15 @@ const Index = () => {
             <Typography>その他グルメ</Typography>
           </Grid>
         </Grid>
+        </Card>
         <Typography variant="h4">オススメ</Typography>
         <Card variant="outlined" className={classes.root} borderRadius="borderRadius">
           <Grid container>
             <Grid item xs={10}>
               <CardContent className={classes.details}>
-                <Typography variant="h5">お店情報</Typography>
+                <Typography variant="h5">店名</Typography>
                 <Typography variant="body1">
-                  aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaa aaaaa aaaaa aaaaaa aaaaa aaaa a
-                  aaaaaaaaaaaaaaaaa aaaaaa aaaa aaaaaaa
+                  お店の情報など
                 </Typography>
               </CardContent>
             </Grid>
@@ -132,6 +133,7 @@ const useStyles = makeStyles({
   },
   image: {
     textAlign: 'center',
+    flexDirection: 'column',
   },
 });
 

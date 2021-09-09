@@ -24,6 +24,7 @@ const fetchApi = async (area, budget, genre) => {
   const areaCode = ['&small_area=X119', '&middle_area=Y964'];
   const budgetList = ['&budget=B010,B011', '&budget=B001,B002', '&budget=B003,B008', ''];
   const genreList = [
+    '',
     '&genre=G001',
     '&genre=G002',
     '&genre=G003',
@@ -41,7 +42,6 @@ const fetchApi = async (area, budget, genre) => {
     '&genre=G015',
     '&genre=G016',
     '&genre=G017',
-    '',
   ];
   query.set('area', areaCode[area]);
   query.append('budget', budgetList[budget]);
@@ -62,174 +62,164 @@ const Index = ({ gourmet }) => {
   const classes = useStyles();
   const [area, setArea] = React.useState(0);
   const [budget, setBudget] = React.useState();
-  const [genre, setGenre] = React.useState();
+  const [genre, setGenre] = React.useState(0);
   const [value, setValue] = React.useState(gourmet ?? '');
   const setLow = async () => {
     setBudget(0);
     console.log(budget);
-    const res = await fetchApi(area, budget, 17);
+    const res = await fetchApi(area, budget, genre);
     console.log(res);
     setValue(res);
   };
   const setMiddle = async () => {
     setBudget(1);
     console.log(budget);
-    const res = await fetchApi(area, budget, 17);
+    const res = await fetchApi(area, budget, genre);
     console.log(res);
     setValue(res);
   };
   const setHigh = async () => {
     setBudget(2);
     console.log(budget);
-    const res = await fetchApi(area, budget, 17);
+    const res = await fetchApi(area, budget, genre);
     console.log(res);
     setValue(res);
   };
   const setAll = async () => {
     setBudget(3);
     console.log(budget);
-    const res = await fetchApi(area, budget, 17);
+    const res = await fetchApi(area, budget, genre);
     console.log(res);
     setValue(res);
   };
   const setNago = async () => {
     setArea(0);
-    const res = await fetchApi(area, budget, 17);
+    const res = await fetchApi(area, budget, genre);
     setValue(res);
   };
   const setYambar = async () => {
     setArea(1);
-    const res = await fetchApi(area, budget, 17);
+    const res = await fetchApi(area, budget, genre);
+    setValue(res);
+  };
+  const setGr = async (gr) => {
+    setGenre(gr);
+    const res = await fetchApi(area, budget, genre);
     setValue(res);
   };
   return (
     <div>
       <CustomAppBar />
       <Container>
-        <Typography variant="h4"><Box>ジャンル</Box></Typography>
+        <Typography variant="h4">
+          <Box>ジャンル</Box>
+        </Typography>
         <Card variant="outlined" className={classes.root}>
-        <Grid container spacing={1} className={classes.genre} justifyContent="center">
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="居酒屋" src="/beer.png" width={100} height={100} />
-            <Typography>居酒屋</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="ダイニングバー・バル" src="/diningbar.png" width={100} height={100} />
-            <Typography>ダイニングバー・バル</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="創作料理" src="/creativecusine.png" width={100} height={100} />
-            <Typography>創作料理</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="和食" src="/japanese.png" width={100} height={100} />
-            <Typography>和食</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="洋食" src="/western.png" width={100} height={100} />
-            <Typography>洋食</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="イタリアン・フレンチ" src="/italian.png" width={100} height={100} />
-            <Typography>イタリアン・フレンチ</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="中華" src="/chinese.png" width={100} height={100} />
-            <Typography>中華</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="焼肉・ホルモン" src="/bbq.png" width={100} height={100} />
-            <Typography>焼肉・ホルモン</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="韓国料理" src="/korean.png" width={100} height={100} />
-            <Typography>韓国料理</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="アジア・エスニック料理" src="/ethnic.png" width={100} height={100} />
-            <Typography>アジア・エスニック料理</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="各国料理" src="/internationalcusine.png" width={100} height={100} />
-            <Typography>各国料理</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="カラオケ・パーティ" src="/karaoke.png" width={100} height={100} />
-            <Typography>カラオケ・パーティ</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="バー・カクテル" src="/cocktail.png" width={100} height={100} />
-            <Typography>バー・カクテル</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="ラーメン" src="/ramen.png" width={100} height={100} />
-            <Typography>ラーメン</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="お好み焼き・もんじゃ" src="/okonomiyaki.png" width={100} height={100} />
-            <Typography>お好み焼き・もんじゃ</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="カフェ・スイーツ" src="/cafe.png" width={100} height={100} />
-            <Typography>カフェ・スイーツ</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={2} className={classes.image}>
-            <Box border={1} boxShadow={1} borderRadius="borderRadius">
-            <Image alt="その他グルメ" src="/others.png" width={100} height={100} />
-            <Typography>その他グルメ</Typography>
-            </Box>
-          </Grid>
-        </Grid>
-        </Card>
-        <Typography variant="h4">オススメ</Typography>
-        <Card variant="outlined" className={classes.root} borderRadius="borderRadius">
-          <Grid container>
-            <Grid item xs={10}>
-              <CardContent className={classes.details}>
-                <Typography variant="h5">店名</Typography>
-                <Typography variant="body1">
-                  お店の情報など
-                </Typography>
-              </CardContent>
+          <Grid container spacing={1} className={classes.genre} justifyContent="center">
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius">
+                <Image alt="居酒屋" src="/beer.png" width={100} height={100}  onClick={() => setGr(1)}/>
+                <Typography>居酒屋</Typography>
+              </Box>
             </Grid>
-            <Grid item xs={2}>
-              <Image alt="店画像" src="/logo3.png" width={200} height={200} />
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="ダイニングバー・バル" src="/diningbar.png" width={100} height={100} onClick={() => setGr(2)}/>
+                <Typography>ダイニングバー・バル</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="創作料理" src="/creativecusine.png" width={100} height={100} onClick={() => setGr(3)}/>
+                <Typography>創作料理</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="和食" src="/japanese.png" width={100} height={100} onClick={() => setGr(4)}/>
+                <Typography>和食</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="洋食" src="/western.png" width={100} height={100} onClick={() => setGr(5)}/>
+                <Typography>洋食</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="イタリアン・フレンチ" src="/italian.png" width={100} height={100} onClick={() => setGr(6)}/>
+                <Typography>イタリアン・フレンチ</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="中華" src="/chinese.png" width={100} height={100} onClick={() => setGr(7)}/>
+                <Typography>中華</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="焼肉・ホルモン" src="/bbq.png" width={100} height={100} onClick={() => setGr(8)}/>
+                <Typography>焼肉・ホルモン</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="韓国料理" src="/korean.png" width={100} height={100} onClick={() => setGr(17)}/>
+                <Typography>韓国料理</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="アジア・エスニック料理" src="/ethnic.png" width={100} height={100} onClick={() => setGr(9)}/>
+                <Typography>アジア・エスニック料理</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="各国料理" src="/internationalcusine.png" width={100} height={100} onClick={() => setGr(10)}/>
+                <Typography>各国料理</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="カラオケ・パーティ" src="/karaoke.png" width={100} height={100} onClick={() => setGr(11)}/>
+                <Typography>カラオケ・パーティ</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="バー・カクテル" src="/cocktail.png" width={100} height={100} onClick={() => setGr(12)}/>
+                <Typography>バー・カクテル</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="ラーメン" src="/ramen.png" width={100} height={100} onClick={() => setGr(13)}/>
+                <Typography>ラーメン</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="お好み焼き・もんじゃ" src="/okonomiyaki.png" width={100} height={100} onClick={() => setGr(16)}/>
+                <Typography>お好み焼き・もんじゃ</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="カフェ・スイーツ" src="/cafe.png" width={100} height={100}onClick={() => setGr(14)} />
+                <Typography>カフェ・スイーツ</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={2} className={classes.image}>
+              <Box border={1} boxShadow={1} borderRadius="borderRadius" >
+                <Image alt="その他グルメ" src="/others.png" width={100} height={100} onClick={() => setGr(15)}/>
+                <Typography>その他グルメ</Typography>
+              </Box>
             </Grid>
           </Grid>
         </Card>
-        <Typography variant="h4">ジャンル</Typography>
         <div>
           <CustomButton onClick={setLow}>0~1500</CustomButton>
           <CustomButton onClick={setMiddle}>1500~3000</CustomButton>
@@ -246,23 +236,23 @@ const Index = ({ gourmet }) => {
             return (
               <li key={index}>
                 <Link href={item.urls.pc}>
-                <Card variant="outlined" className={classes.root} borderRadius="borderRadius">
-                  <Grid container>
-                    <Grid item xs={10}>
-                      <CardContent className={classes.details}>
-                        <Typography variant="h5">{item.name}</Typography>
-                        <Typography variant="body1">
+                  <Card variant="outlined" className={classes.root} borderRadius="borderRadius">
+                    <Grid container>
+                      <Grid item xs={10}>
+                        <CardContent className={classes.details}>
+                          <Typography variant="h5">{item.name}</Typography>
+                          <Typography variant="body1">
                             <p>{item.genre.name}</p>
                             <p>{item.catch}</p>
                             <p>{item.access}</p>
-                        </Typography>
-                      </CardContent>
+                          </Typography>
+                        </CardContent>
+                      </Grid>
+                      <Grid item xs={2}>
+                        <img src={item.photo.pc.l} alt={item.className} width={200} height={200} />
+                      </Grid>
                     </Grid>
-                    <Grid item xs={2}>
-                      <img src={item.photo.pc.l} alt={item.className}  width={200} height={200} />
-                    </Grid>
-                  </Grid>
-                </Card>
+                  </Card>
                 </Link>
               </li>
             );

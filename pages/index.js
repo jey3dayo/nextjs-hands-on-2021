@@ -23,15 +23,15 @@ const Index = () => {
         <Card variant="outlined" className={classes.root} borderRadius="borderRadius">
           <Grid container >
             <Grid item xs={10}>
-            <CardContent className={classes.details}>
-              <Typography variant="h5">お店情報</Typography>
-              <Typography variant="body1">
-                aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaa aaaaa aaaaa aaaaaa aaaaa aaaa a aaaaaaaaaaaaaaaaa aaaaaa aaaa aaaaaaa
-              </Typography>
-            </CardContent>
+              <CardContent className={classes.details}>
+                <Typography variant="h5">お店情報</Typography>
+                <Typography variant="body1">
+                  aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaaa aaaa aaaaa aaaaa aaaaaa aaaaa aaaa a aaaaaaaaaaaaaaaaa aaaaaa aaaa aaaaaaa
+                </Typography>
+              </CardContent>
             </Grid>
             <Grid item xs={2}>
-            <Image alt="店画像" src="/logo3.png" width={200} height={200} />
+              <Image alt="店画像" src="/logo3.png" width={200} height={200} />
             </Grid>
           </Grid>
         </Card>

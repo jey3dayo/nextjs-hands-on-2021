@@ -17,7 +17,7 @@ const { APP_NAME } = publicRuntimeConfig;
 const CustomAppBar = () => (
   <AppBar position="static">
     <Toolbar>
-      <Image alt="グルメンドロゴ" src="/logo.png" width={100} height={100} />
+      <Image alt="グルメンドロゴ" src="/logo1.png" width={100} height={100} />
       <Grid container spacing={2} justifyContent="flex-end" alignItems="flex-end">
         <Grid>
           <Box fontSize={18}>ジャンル</Box>

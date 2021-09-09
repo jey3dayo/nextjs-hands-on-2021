@@ -17,13 +17,7 @@ const { APP_NAME } = publicRuntimeConfig;
 const CustomAppBar = () => (
   <AppBar position="static">
     <Toolbar>
-      <IconButton size="medium" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-        <MenuIcon />
-      </IconButton>
-      <Image alt="グルメンドロゴ" src="/logo_transparent.png" width={100} height={100} />
-      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-        {APP_NAME}
-      </Typography>
+      <Image alt="グルメンドロゴ" src="/logo.png" width={100} height={100} />
       <Grid container spacing={2} justifyContent="flex-end" alignItems="flex-end">
         <Grid>
           <Box fontSize={18}>ジャンル</Box>

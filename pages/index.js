@@ -65,46 +65,53 @@ const Index = ({ gourmet }) => {
   const [genre, setGenre] = React.useState(0);
   const [value, setValue] = React.useState(gourmet ?? '');
   const setLow = async () => {
-    setBudget(0);
+    const select = 0;
+    setBudget(select);
     console.log(budget);
-    const res = await fetchApi(area, budget, genre);
+    const res = await fetchApi(area, select, genre);
     console.log(res);
     setValue(res);
   };
   const setMiddle = async () => {
-    setBudget(1);
+    const select = 1;
+    setBudget(select);
     console.log(budget);
-    const res = await fetchApi(area, budget, genre);
+    const res = await fetchApi(area, select, genre);
     console.log(res);
     setValue(res);
   };
   const setHigh = async () => {
-    setBudget(2);
+    const select = 2;
+    setBudget(select);
     console.log(budget);
-    const res = await fetchApi(area, budget, genre);
+    const res = await fetchApi(area, select, genre);
     console.log(res);
     setValue(res);
   };
   const setAll = async () => {
-    setBudget(3);
+    const select = 3;
+    setBudget(select);
     console.log(budget);
-    const res = await fetchApi(area, budget, genre);
+    const res = await fetchApi(area, select, genre);
     console.log(res);
     setValue(res);
   };
   const setNago = async () => {
-    setArea(0);
-    const res = await fetchApi(area, budget, genre);
+    const select = 0;
+    setArea(select);
+    const res = await fetchApi(select, budget, genre);
     setValue(res);
   };
   const setYambar = async () => {
+    const select = 1;
     setArea(1);
-    const res = await fetchApi(area, budget, genre);
+    const res = await fetchApi(select, budget, genre);
     setValue(res);
   };
   const setGr = async (gr) => {
-    setGenre(gr);
-    const res = await fetchApi(area, budget, genre);
+    const select = gr;
+    setGenre(select);
+    const res = await fetchApi(area, budget, select);
     setValue(res);
   };
   return (
@@ -292,7 +299,7 @@ const useStyles = makeStyles({
 
 export async function getServerSideProps() {
   // 取得テスト
-  const res = await fetchApi(0, 3, 17);
+  const res = await fetchApi(0, 3, 0);
   return {
     props: {
       gourmet: res,
